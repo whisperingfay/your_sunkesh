@@ -1,0 +1,6 @@
+STATUS & INFO
+- git status (kung nasaang repository or branch)
+- git log (tingnan ang history ng commits)
+- git log eto mga commits tapos pang gamit sa revert
+- git revert 
+- git branch (makikita lahat ng branch)
