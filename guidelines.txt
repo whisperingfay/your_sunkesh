@@ -10,3 +10,9 @@ create: http://localhost/mysenkesh/your_sunkesh/api/v1/products.php?name=airpods
 read: http://localhost/mysenkesh/your_sunkesh/api/v1/products.php
 update: http://localhost/mysenkesh/your_sunkesh/api/v1/products.php?update=1&id=1&name=MouseUpdated&price=350
 delete: http://localhost/mysenkesh/your_sunkesh/api/v1/customers.php?delete=1&id=6
+
+ORDERS
+create: http://localhost/mysenkesh/your_sunkesh/api/v1/orders.php?customer_id=2&product_id=1&quantity=4
+read: http://localhost/mysenkesh/your_sunkesh/api/v1/orders.php
+update: http://localhost/mysenkesh/your_sunkesh/api/v1/orders.php?update=1&id=1&product_id=2&quantity=5
+delete: http://localhost/mysenkesh/your_sunkesh/api/v1/orders.php?delete=1&id=5

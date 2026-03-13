@@ -18,16 +18,22 @@ if ($method === 'GET' && isset($_GET['name']) && isset($_GET['price']) && !isset
     exit;
 }
 
-// Update product via GET
-if ($method === 'GET' && isset($_GET['update']) && $_GET['update'] == 1 && isset($_GET['id']) && isset($_GET['name']) && isset($_GET['price'])) {
+
+// Partial update product via GET
+if ($method === 'GET' && isset($_GET['update']) && $_GET['update'] == 1 && isset($_GET['id'])) {
     $id = (int)$_GET['id'];
-    $name = $conn->real_escape_string($_GET['name']);
-    $price = (float)$_GET['price'];
-    $sql = "UPDATE products SET name='$name', price=$price WHERE id=$id";
-    if ($conn->query($sql)) {
-        echo json_encode(['success' => true, 'updated_id' => $id]);
+    $fields = [];
+    if (isset($_GET['name'])) $fields[] = "name='" . $conn->real_escape_string($_GET['name']) . "'";
+    if (isset($_GET['price'])) $fields[] = "price=" . (float)$_GET['price'];
+    if (count($fields) > 0) {
+        $sql = "UPDATE products SET " . implode(", ", $fields) . " WHERE id=$id";
+        if ($conn->query($sql)) {
+            echo json_encode(['success' => true, 'updated_id' => $id]);
+        } else {
+            echo json_encode(['success' => false, 'error' => $conn->error]);
+        }
     } else {
-        echo json_encode(['success' => false]);
+        echo json_encode(['success' => false, 'error' => 'No fields to update']);
     }
     exit;
 }
