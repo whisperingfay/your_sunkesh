@@ -3,7 +3,35 @@ require 'db.php';
 
 header('Content-Type: application/json');
 
+
 $method = $_SERVER['REQUEST_METHOD'];
+
+// Add customer via GET
+if ($method === 'GET' && isset($_GET['name']) && isset($_GET['email']) && !isset($_GET['update'])) {
+    $name = $conn->real_escape_string($_GET['name']);
+    $email = $conn->real_escape_string($_GET['email']);
+    $sql = "INSERT INTO customers (name, email) VALUES ('$name', '$email')";
+    if ($conn->query($sql)) {
+        echo json_encode(['success' => true, 'id' => $conn->insert_id]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+    exit;
+}
+
+// Update customer via GET
+if ($method === 'GET' && isset($_GET['update']) && $_GET['update'] == 1 && isset($_GET['id']) && isset($_GET['name']) && isset($_GET['email'])) {
+    $id = (int)$_GET['id'];
+    $name = $conn->real_escape_string($_GET['name']);
+    $email = $conn->real_escape_string($_GET['email']);
+    $sql = "UPDATE customers SET name='$name', email='$email' WHERE id=$id";
+    if ($conn->query($sql)) {
+        echo json_encode(['success' => true, 'updated_id' => $id]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+    exit;
+}
 
 switch ($method) {
     case 'GET':

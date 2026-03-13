@@ -3,7 +3,36 @@ require 'db.php';
 
 header('Content-Type: application/json');
 
+// Support adding product via GET parameters
 $method = $_SERVER['REQUEST_METHOD'];
+
+
+// Add product via GET
+if ($method === 'GET' && isset($_GET['name']) && isset($_GET['price']) && !isset($_GET['update'])) {
+    $name = $conn->real_escape_string($_GET['name']);
+    $price = (float)$_GET['price'];
+    $sql = "INSERT INTO products (name, price) VALUES ('$name', $price)";
+    if ($conn->query($sql)) {
+        echo json_encode(['success' => true, 'id' => $conn->insert_id]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+    exit;
+}
+
+// Update product via GET
+if ($method === 'GET' && isset($_GET['update']) && $_GET['update'] == 1 && isset($_GET['id']) && isset($_GET['name']) && isset($_GET['price'])) {
+    $id = (int)$_GET['id'];
+    $name = $conn->real_escape_string($_GET['name']);
+    $price = (float)$_GET['price'];
+    $sql = "UPDATE products SET name='$name', price=$price WHERE id=$id";
+    if ($conn->query($sql)) {
+        echo json_encode(['success' => true, 'updated_id' => $id]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+    exit;
+}
 
 switch ($method) {
     case 'GET':
@@ -52,3 +81,4 @@ switch ($method) {
         break;
 }
 ?>
+
