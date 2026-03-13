@@ -9,3 +9,7 @@ ADDING & COMMITING
 - git add . (i-stage lahat ng changes sa folder, . meaning lahat)
 - git add <file> (i-stage ang file para sa commit, specific lang ipu-push)
 - git commit -m "message" (i-save ang staged changes sa local repo)
+
+PUSH & PULL
+- git push (i-upload ang commits sa remote branch)
+- git pull (kukunin lahat yung bagong commits galing github at magmerge sa local mo)
