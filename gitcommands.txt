@@ -1,4 +1,4 @@
-STATUS & INFO
+STATUS & INFOS
 - git status (kung nasaang repository or branch)
 - git log (tingnan ang history ng commits)
 - git log eto mga commits tapos pang gamit sa revert
@@ -13,3 +13,8 @@ ADDING & COMMITING
 PUSH & PULL
 - git push (i-upload ang commits sa remote branch)
 - git pull (kukunin lahat yung bagong commits galing github at magmerge sa local mo)
+
+BRANCHING & MERGING
+- git branch <name> (Gumawa ng bagong branch)
+git checkout <name> or git switch <name> (Lumipat sa ibang branch) 
+
