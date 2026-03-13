@@ -19,6 +19,7 @@ if ($method === 'GET' && isset($_GET['name']) && isset($_GET['email']) && !isset
     exit;
 }
 
+
 // Update customer via GET
 if ($method === 'GET' && isset($_GET['update']) && $_GET['update'] == 1 && isset($_GET['id']) && isset($_GET['name']) && isset($_GET['email'])) {
     $id = (int)$_GET['id'];
@@ -27,6 +28,18 @@ if ($method === 'GET' && isset($_GET['update']) && $_GET['update'] == 1 && isset
     $sql = "UPDATE customers SET name='$name', email='$email' WHERE id=$id";
     if ($conn->query($sql)) {
         echo json_encode(['success' => true, 'updated_id' => $id]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+    exit;
+}
+
+// Delete customer via GET
+if ($method === 'GET' && isset($_GET['delete']) && $_GET['delete'] == 1 && isset($_GET['id'])) {
+    $id = (int)$_GET['id'];
+    $sql = "DELETE FROM customers WHERE id=$id";
+    if ($conn->query($sql)) {
+        echo json_encode(['success' => true, 'deleted_id' => $id]);
     } else {
         echo json_encode(['success' => false]);
     }

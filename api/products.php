@@ -20,6 +20,7 @@ if ($method === 'GET' && isset($_GET['name']) && isset($_GET['price']) && !isset
     exit;
 }
 
+
 // Update product via GET
 if ($method === 'GET' && isset($_GET['update']) && $_GET['update'] == 1 && isset($_GET['id']) && isset($_GET['name']) && isset($_GET['price'])) {
     $id = (int)$_GET['id'];
@@ -28,6 +29,18 @@ if ($method === 'GET' && isset($_GET['update']) && $_GET['update'] == 1 && isset
     $sql = "UPDATE products SET name='$name', price=$price WHERE id=$id";
     if ($conn->query($sql)) {
         echo json_encode(['success' => true, 'updated_id' => $id]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+    exit;
+}
+
+// Delete product via GET
+if ($method === 'GET' && isset($_GET['delete']) && $_GET['delete'] == 1 && isset($_GET['id'])) {
+    $id = (int)$_GET['id'];
+    $sql = "DELETE FROM products WHERE id=$id";
+    if ($conn->query($sql)) {
+        echo json_encode(['success' => true, 'deleted_id' => $id]);
     } else {
         echo json_encode(['success' => false]);
     }

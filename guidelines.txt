@@ -2,9 +2,11 @@ CUSTOMERS
 create: http://localhost/mysenkesh/your_sunkesh/api/customers.php?name=amurao&email=amurao@email.com
 read: http://localhost/mysenkesh/your_sunkesh/api/customers.php
 update: http://localhost/mysenkesh/your_sunkesh/api/customers.php?update=1&id=1&name=zekiarina&email=jomarieamurao@email.com
+delete: http://localhost/mysenkesh/your_sunkesh/api/products.php?delete=1&id=1
 
 
 PRODUCTS
 create: http://localhost/mysenkesh/your_sunkesh/api/products.php?name=airpods&price=1500
 read: http://localhost/mysenkesh/your_sunkesh/api/products.php
 update: http://localhost/mysenkesh/your_sunkesh/api/products.php?update=1&id=1&name=MouseUpdated&price=350
+delete: http://localhost/mysenkesh/your_sunkesh/api/customers.php?delete=1&id=6
