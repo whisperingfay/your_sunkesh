@@ -1,0 +1,98 @@
+<?php
+require '../db.php';
+
+header('Content-Type: application/json');
+
+$method = $_SERVER['REQUEST_METHOD'];
+
+// Add category via GET
+if ($method === 'GET' && isset($_GET['name']) && !isset($_GET['update'])) {
+    $name = $conn->real_escape_string($_GET['name']);
+    $sql = "INSERT INTO categories (name) VALUES ('$name')";
+    if ($conn->query($sql)) {
+        echo json_encode(['success' => true, 'id' => $conn->insert_id]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+    exit;
+}
+
+// Partial update category via GET
+if ($method === 'GET' && isset($_GET['update']) && $_GET['update'] == 1 && isset($_GET['id'])) {
+    $id = (int)$_GET['id'];
+    $fields = [];
+    if (isset($_GET['name'])) $fields[] = "name='" . $conn->real_escape_string($_GET['name']) . "'";
+    if (count($fields) > 0) {
+        $sql = "UPDATE categories SET " . implode(", ", $fields) . " WHERE id=$id";
+        if ($conn->query($sql)) {
+            echo json_encode(['success' => true, 'updated_id' => $id]);
+        } else {
+            echo json_encode(['success' => false, 'error' => $conn->error]);
+        }
+    } else {
+        echo json_encode(['success' => false, 'error' => 'No fields to update']);
+    }
+    exit;
+}
+
+// Delete category via GET
+if ($method === 'GET' && isset($_GET['delete']) && $_GET['delete'] == 1 && isset($_GET['id'])) {
+    $id = (int)$_GET['id'];
+    $sql = "DELETE FROM categories WHERE id=$id";
+    if ($conn->query($sql)) {
+        echo json_encode(['success' => true, 'deleted_id' => $id]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+    exit;
+}
+
+switch ($method) {
+    case 'GET':
+        $result = $conn->query('SELECT * FROM categories');
+        if (!$result) {
+            echo json_encode(['error' => $conn->error]);
+            exit;
+        }
+        $categories = [];
+        while ($row = $result->fetch_assoc()) {
+            $categories[] = $row;
+        }
+        echo json_encode($categories);
+        break;
+    case 'POST':
+        $data = json_decode(file_get_contents('php://input'), true);
+        $name = $conn->real_escape_string($data['name']);
+        $sql = "INSERT INTO categories (name) VALUES ('$name')";
+        if ($conn->query($sql)) {
+            echo json_encode(['success' => true, 'id' => $conn->insert_id]);
+        } else {
+            echo json_encode(['success' => false]);
+        }
+        break;
+    case 'PUT':
+        $data = json_decode(file_get_contents('php://input'), true);
+        $id = (int)$data['id'];
+        $name = $conn->real_escape_string($data['name']);
+        $sql = "UPDATE categories SET name='$name' WHERE id=$id";
+        if ($conn->query($sql)) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false]);
+        }
+        break;
+    case 'DELETE':
+        $data = json_decode(file_get_contents('php://input'), true);
+        $id = (int)$data['id'];
+        $sql = "DELETE FROM categories WHERE id=$id";
+        if ($conn->query($sql)) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false]);
+        }
+        break;
+    default:
+        echo json_encode(['error' => 'Invalid request']);
+        break;
+}
+?>
