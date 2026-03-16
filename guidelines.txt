@@ -16,3 +16,31 @@ create: http://localhost/mysenkesh/your_sunkesh/api/v1/orders.php?customer_id=2&
 read: http://localhost/mysenkesh/your_sunkesh/api/v1/orders.php
 update: http://localhost/mysenkesh/your_sunkesh/api/v1/orders.php?update=1&id=1&product_id=2&quantity=5
 delete: http://localhost/mysenkesh/your_sunkesh/api/v1/orders.php?delete=1&id=5
+
+
+CATEGORIES
+create: http://localhost/mysenkesh/your_sunkesh/api/v1/categories.php?name=Electronics
+read: http://localhost/mysenkesh/your_sunkesh/api/v1/categories.php
+update: http://localhost/mysenkesh/your_sunkesh/api/v1/categories.php?update=1&id=1&name=Accessories
+delete: http://localhost/mysenkesh/your_sunkesh/api/v1/categories.php?delete=1&id=1
+
+
+PAYMENTS
+create: http://localhost/mysenkesh/your_sunkesh/api/v1/payments.php?order_id=1&amount=1500&method=gcash
+read: http://localhost/mysenkesh/your_sunkesh/api/v1/payments.php
+update: http://localhost/mysenkesh/your_sunkesh/api/v1/payments.php?update=1&id=1&amount=2000&method=bank_transfer
+delete: http://localhost/mysenkesh/your_sunkesh/api/v1/payments.php?delete=1&id=1
+
+
+REVIEWS
+create: http://localhost/mysenkesh/your_sunkesh/api/v1/reviews.php?product_id=1&customer_id=2&rating=5&comment=Great!
+read: http://localhost/mysenkesh/your_sunkesh/api/v1/reviews.php
+update: http://localhost/mysenkesh/your_sunkesh/api/v1/reviews.php?update=1&id=1&rating=4&comment=Good!
+delete: http://localhost/mysenkesh/your_sunkesh/api/v1/reviews.php?delete=1&id=1
+
+
+INVENTORY
+create: http://localhost/mysenkesh/your_sunkesh/api/v1/inventory.php?product_id=1&stock=100
+read: http://localhost/mysenkesh/your_sunkesh/api/v1/inventory.php
+update: http://localhost/mysenkesh/your_sunkesh/api/v1/inventory.php?update=1&id=1&stock=80
+delete: http://localhost/mysenkesh/your_sunkesh/api/v1/inventory.php?delete=1&id=1
