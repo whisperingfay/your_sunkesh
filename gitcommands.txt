@@ -18,3 +18,47 @@ BRANCHING & MERGING
 - git branch <name> (Gumawa ng bagong branch)
 git checkout <name> or git switch <name> (Lumipat sa ibang branch) 
 
+----------------------------------------------------
+
+git add .
+git commit -m "status & info"
+git push
+
+git add .
+git commit -m "adding & commiting"
+git push
+
+git add .
+git commit -m "push & pull"
+git push
+
+git revert 7b2fabd4d32dbb9951a774aa2714934202281a9d
+git push
+
+git add .
+git commit -m "customer,products,db"
+git push
+
+git add .
+git commit -m "adding update info"
+git push
+
+git add .
+git commit -m "adding delete"
+git push
+
+git add .
+git commit -m "updated crud"
+git push
+
+git add .
+git commit -m "deleted"
+git push
+
+git add .
+git commit -m "fix crud for c,o,p"
+git push
+
+git add .
+git commit -m "categories"
+git push
