@@ -62,3 +62,11 @@ git push
 git add .
 git commit -m "categories"
 git push
+
+git add .
+git commit -m "inventory"
+git push
+
+git add .
+git commit -m "adding payments"
+git push
