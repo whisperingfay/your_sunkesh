@@ -1,0 +1,43 @@
+------------- E-COMMERCE SYSTEMS -------------
+
+STEP 1: Create a CATEGORY (Optional but recommended)
+URL: http://localhost/mysenkesh/your_sunkesh/api/v1/categories.php?name=Electronics
+Purpose: Organize products
+
+
+STEP 2: Create PRODUCTS (under a category)
+URL: http://localhost/mysenkesh/your_sunkesh/api/v1/products.php?name=AirPods&price=1500
+Purpose: Add items for sale
+
+
+STEP 3: Create INVENTORY for the Product
+URL: http://localhost/mysenkesh/your_sunkesh/api/v1/inventory.php?product_id=1&stock=100
+Purpose: Track stock levels or availability
+
+
+STEP 4: Create a CUSTOMER
+URL: http://localhost/mysenkesh/your_sunkesh/api/v1/customers.php?name=Juan&email=juan@email.com
+Purpose: Register buyer or Customer
+
+
+STEP 5: Create an ORDER (Customer buys Product)
+URL: http://localhost/mysenkesh/your_sunkesh/api/v1/orders.php?customer_id=1&product_id=1&quantity=2
+Purpose: Record purchase
+
+
+STEP 6: Create PAYMENT for the ORDER
+URL: http://localhost/mysenkesh/your_sunkesh/api/v1/payments.php?order_id=1&amount=3000&method=gcash
+Purpose: Record payment
+
+
+STEP 7: Update INVENTORY after Order
+URL: http://localhost/mysenkesh/your_sunkesh/api/v1/inventory.php?update=1&id=1&stock=98
+Purpose: Reduce stock because 2 units were sold
+
+
+STEP 8: Create REVIEW (Customer reviews the Product)
+URL: http://localhost/mysenkesh/your_sunkesh/api/v1/reviews.php?product_id=1&customer_id=1&rating=5&comment=Excellent%20product!
+Purpose: Customer feedback
+
+
+
