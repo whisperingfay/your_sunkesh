@@ -25,7 +25,14 @@ if ($method === 'GET' && isset($_GET['customer_id']) && isset($_GET['product_id'
     }
     $sql = "INSERT INTO orders (customer_id, customer_name, product_id, product_name, quantity, order_date) VALUES ($customer_id, '$customer_name', $product_id, '$product_name', $quantity, '$order_date')";
     if ($conn->query($sql)) {
-        echo json_encode(['success' => true, 'id' => $conn->insert_id]);
+        $order_id = $conn->insert_id;
+        // Update inventory - reduce stock by quantity ordered
+        $update_inventory = "UPDATE inventory SET stock = stock - $quantity WHERE product_id = $product_id";
+        if ($conn->query($update_inventory)) {
+            echo json_encode(['success' => true, 'id' => $order_id, 'inventory_updated' => true]);
+        } else {
+            echo json_encode(['success' => true, 'id' => $order_id, 'inventory_updated' => false, 'inventory_error' => $conn->error]);
+        }
     } else {
         echo json_encode(['success' => false, 'error' => $conn->error]);
     }
@@ -111,7 +118,14 @@ switch ($method) {
         }
         $sql = "INSERT INTO orders (customer_id, customer_name, product_id, product_name, quantity, order_date) VALUES ($customer_id, '$customer_name', $product_id, '$product_name', $quantity, '$order_date')";
         if ($conn->query($sql)) {
-            echo json_encode(['success' => true, 'id' => $conn->insert_id]);
+            $order_id = $conn->insert_id;
+            // Update inventory - reduce stock by quantity ordered
+            $update_inventory = "UPDATE inventory SET stock = stock - $quantity WHERE product_id = $product_id";
+            if ($conn->query($update_inventory)) {
+                echo json_encode(['success' => true, 'id' => $order_id, 'inventory_updated' => true]);
+            } else {
+                echo json_encode(['success' => true, 'id' => $order_id, 'inventory_updated' => false, 'inventory_error' => $conn->error]);
+            }
         } else {
             echo json_encode(['success' => false, 'error' => $conn->error]);
         }
