@@ -23,7 +23,7 @@ if ($method === 'GET' && isset($_GET['customer_id']) && isset($_GET['product_id'
         $res = $conn->query("SELECT name FROM products WHERE id=$product_id LIMIT 1");
         if ($row = $res->fetch_assoc()) $product_name = $row['name'];
     }
-    $sql = "INSERT INTO orders (customer_id, customer_name, product_id, product_name, quantity, order_date) VALUES ($customer_id, '$customer_name', $product_id, '$product_name', $quantity, '$order_date')";
+    $sql = "INSERT INTO orders (customer_id, customer_name, product_id, product_name, quantity, order_date) VALUES ($customer_id, '{$customer_name}', $product_id, '{$product_name}', $quantity, '$order_date')";
     if ($conn->query($sql)) {
         $order_id = $conn->insert_id;
         // Update inventory - reduce stock by quantity ordered
