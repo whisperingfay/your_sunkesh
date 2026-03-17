@@ -44,3 +44,24 @@ create: http://localhost/mysenkesh/your_sunkesh/api/v1/inventory.php?product_id=
 read: http://localhost/mysenkesh/your_sunkesh/api/v1/inventory.php
 update: http://localhost/mysenkesh/your_sunkesh/api/v1/inventory.php?update=1&id=1&stock=80
 delete: http://localhost/mysenkesh/your_sunkesh/api/v1/inventory.php?delete=1&id=1
+
+
+SHIPPING
+create: http://localhost/mysenkesh/your_sunkesh/api/v1/shipping.php?order_id=1&tracking_number=PH123456789&carrier=DHL&status=pending
+read: http://localhost/mysenkesh/your_sunkesh/api/v1/shipping.php
+update: http://localhost/mysenkesh/your_sunkesh/api/v1/shipping.php?update=1&id=1&status=delivered&delivery_date=2026-03-21
+delete: http://localhost/mysenkesh/your_sunkesh/api/v1/shipping.php?delete=1&id=1
+
+
+RETURNS
+create: http://localhost/mysenkesh/your_sunkesh/api/v1/returns.php?order_id=1&reason=Defective&status=pending
+read: http://localhost/mysenkesh/your_sunkesh/api/v1/returns.php
+update: http://localhost/mysenkesh/your_sunkesh/api/v1/returns.php?update=1&id=1&status=approved&refund_date=2026-03-22
+delete: http://localhost/mysenkesh/your_sunkesh/api/v1/returns.php?delete=1&id=1
+
+
+DISCOUNTS
+create: http://localhost/mysenkesh/your_sunkesh/api/v1/discounts.php?code=SAVE20&percentage=20&description=20%20off%20all%20items
+read: http://localhost/mysenkesh/your_sunkesh/api/v1/discounts.php
+update: http://localhost/mysenkesh/your_sunkesh/api/v1/discounts.php?update=1&id=1&percentage=15
+delete: http://localhost/mysenkesh/your_sunkesh/api/v1/discounts.php?delete=1&id=1
