@@ -68,5 +68,30 @@ git commit -m "inventory"
 git push
 
 git add .
+git commit -m "inventory command"
+git push
+
+git add .
 git commit -m "adding payments"
 git push
+
+git add .
+git commit -m "gitcommands history"
+git push
+
+git add .
+git commit -m "adding reviews"
+git push
+
+git add .
+git commit -m "ecommerce flow system"
+git push
+
+git add .
+git commit -m "fix order when purchase"
+git push
+
+git add .
+git commit -m "updated orders"
+git push
+
