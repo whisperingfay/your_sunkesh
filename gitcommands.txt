@@ -95,3 +95,22 @@ git add .
 git commit -m "updated orders"
 git push
 
+git add .
+git commit -m "updated command"
+git push
+
+git add .
+git commit -m "uadding discounts"
+git push
+
+git add .
+git commit -m "adding returns"
+git push
+
+git add .
+git commit -m "add shipping"
+git push
+
+git add .
+git commit -m "guidelines and e-commerce"
+git push
